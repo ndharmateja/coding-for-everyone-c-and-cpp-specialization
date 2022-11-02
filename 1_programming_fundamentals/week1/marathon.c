@@ -6,7 +6,7 @@ int main()
     double kilometers;
 
     kilometers = 1.609 * (miles + yards / 1760.0);
-    printf("Marathon distance: %.2f km\n", kilometers);
+    printf("Marathon distance: %.2lf km\n", kilometers);
 
     return 0;
 }
