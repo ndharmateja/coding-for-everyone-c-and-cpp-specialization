@@ -1,3 +1,8 @@
+# Unix executables (ref: https://stackoverflow.com/a/53416684/9430523)
+*
+!/**/
+!*.*
+
 # Prerequisites
 *.d
 
