@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <math.h>
 
-int main()
+int main(void)
 {
-    double x, sin_value;
-    printf("Enter a value between 0 and 1: ");
-    scanf("%lf", &x);
+    // Declarations
+    double x = 0.75, sin_value;
 
+    // Compute the sin value of the given input
     sin_value = sin(x);
+
+    // Print the sin value
     printf("sin(%lf) = %lf\n", x, sin_value);
 }
