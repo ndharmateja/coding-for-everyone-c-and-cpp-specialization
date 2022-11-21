@@ -3,9 +3,9 @@
 
 int main(void)
 {
-    int radius;
+    double radius;
     printf("Enter radius: ");
-    scanf("%d", &radius);
-    printf("volume is: %f \n\n", 4 * PI * radius * radius * radius / 3.0);
+    scanf("%lf", &radius);
+    printf("volume is: %lf \n\n", 4 * PI * radius * radius * radius / 3.0);
     return 0;
 }
