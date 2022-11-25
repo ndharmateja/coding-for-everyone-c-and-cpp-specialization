@@ -39,7 +39,7 @@ int main(void)
     int array[size];
 
     FILE *ifp;
-    ifp = fopen("data.txt", "r");
+    ifp = fopen("scores.txt", "r");
     read_data(ifp, array, &size);
     fclose(ifp);
 
