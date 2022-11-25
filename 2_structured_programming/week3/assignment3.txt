@@ -32,14 +32,14 @@ ListNode *add_to_front(int d, ListNode *head)
     return new_head;
 }
 
-// Creates a list of random elements [0, 100000] with given size
+// Creates a list of random elements [0, 10000] with given size
 // and returns the pointer of the head node
 ListNode *create_random_list(int size)
 {
     ListNode *head = NULL;
     for (int i = 0; i < size; i++)
     {
-        int random_data = rand() % 100000;
+        int random_data = rand() % 10000;
         head = add_to_front(random_data, head);
     }
 
@@ -66,47 +66,34 @@ void print_list(ListNode *head, int index, char *title)
     printf("\n");
 }
 
-// Sorts the list with given head
-// and returns the new head of the list
-ListNode *bubble_sort(ListNode *head, int list_size)
+// Swaps the data between two nodes
+void swap(ListNode *node1, ListNode *node2)
 {
-    // variable to store the new head
-    // which we will return
-    ListNode *new_head = head;
+    int temp = node1->data;
+    node1->data = node2->data;
+    node2->data = temp;
+}
 
+// Sorts the list with given head
+void bubble_sort(ListNode *head, int list_size)
+{
     // Bubble sort
     // Outer loop runs for the list size number of timess
     for (int i = 0; i < list_size; i++)
     {
-        // We need to update the new head
-        // if first two elements of the list
-        // need to be swapped
-        if (new_head->data > new_head->next->data)
-        {
-            ListNode *temp = new_head->next;
-            new_head->next = temp->next;
-            temp->next = new_head;
-            new_head = temp;
-        }
-
         // Iterating over the entire list
         // we swap adjacent elements whenever
         // the next element is greater than the current element
-        ListNode *curr = new_head;
-        while (curr != NULL && curr->next != NULL && curr->next->next != NULL)
+        ListNode *curr = head;
+        while (curr != NULL && curr->next != NULL)
         {
-            if (curr->next->data > curr->next->next->data)
+            if (curr->data > curr->next->data)
             {
-                ListNode *temp = curr->next;
-                curr->next = temp->next;
-                temp->next = curr->next->next;
-                curr->next->next = temp;
+                swap(curr, curr->next);
             }
             curr = curr->next;
         }
     }
-
-    return new_head;
 }
 
 int main(void)
@@ -120,6 +107,6 @@ int main(void)
     print_list(head, 0, "Unsorted list:");
 
     // Sort the list and print it
-    head = bubble_sort(head, list_size);
+    bubble_sort(head, list_size);
     print_list(head, 0, "Sorted list:");
 }
