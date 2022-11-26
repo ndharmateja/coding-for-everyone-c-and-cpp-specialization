@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 // Define the required constants
 #define DECK_SIZE 52
@@ -38,6 +39,9 @@ void swap(Card cards[], int i, int j)
 // Uses Fisher-Yates algorithm : http://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
 void shuffle_array(Card cards[])
 {
+    // Reset random seed each time
+    srand(time(0) + (rand() % 100000));
+
     for (int i = DECK_SIZE - 1; i >= 1; i--)
     {
         int random_index = rand() % (i + 1);
