@@ -100,6 +100,20 @@ void insert(Node *p1, Node *p2, Node *q)
     q->next = p2;
 }
 
+// * **head => pointer to pointer to the head
+void delete (Node *elem, Node **prev, Node **head)
+{
+    if (*head == *prev)
+    {
+        *head = elem->next;
+    }
+    else
+    {
+        (*prev)->next = elem->next;
+    }
+    free(elem);
+}
+
 int main(void)
 {
     printf("List 1:\n");
