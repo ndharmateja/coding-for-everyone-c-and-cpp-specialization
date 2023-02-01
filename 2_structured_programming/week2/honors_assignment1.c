@@ -140,7 +140,7 @@ void print_array(int array[], int size, char *title)
 }
 
 // Resets all values of array to 0
-void reset_counts_array(int counts[], int size)
+void reset_array(int counts[], int size)
 {
     for (int i = 0; i < size; i++)
         counts[i] = 0;
@@ -160,7 +160,7 @@ void run_simulation(Card cards[], int counts[])
 
         // Initialize an array for the hand of cards
         Card hand[HAND_SIZE];
-        reset_counts_array(pips_counts, NUM_PIPS);
+        reset_array(pips_counts, NUM_PIPS);
 
         // Take first 7 cards of the shuffled deck
         // as the hand
@@ -231,7 +231,7 @@ int main(void)
         "Full House",
         "Four Of A Kind"};
     int counts[NUM_HAND_TYPES];
-    reset_counts_array(counts, NUM_HAND_TYPES);
+    reset_array(counts, NUM_HAND_TYPES);
 
     // Run the simulation
     run_simulation(cards, counts);
