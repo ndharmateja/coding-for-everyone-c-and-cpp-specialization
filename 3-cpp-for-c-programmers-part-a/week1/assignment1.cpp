@@ -9,12 +9,12 @@ using namespace std;
 const int n = 40;
 
 // Sum function
-inline void sum(int *p, int n, vector<int> d)
+inline void sum(int &p, int n, vector<int> d)
 {
-    *p = 0;
+    p = 0;
     for (int i = 0; i < n; ++i)
     {
-        *p = *p + d[i];
+        p = p + d[i];
     }
 }
 
@@ -30,7 +30,7 @@ int main()
     {
         data[i] = i;
     }
-    sum(&accum, n, data);
+    sum(accum, n, data);
 
     // Output the results
     cout << "sum is " << accum << endl;
