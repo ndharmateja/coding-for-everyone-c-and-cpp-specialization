@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 
     // Define counts array
     int n_dice = 3;
-    int n_counts = sides * n_dice + 1;
+    int n_counts = SIDES * n_dice + 1;
     int outcomes[n_counts];
     initializeArray(outcomes, n_counts, 0);
 
