@@ -8,11 +8,12 @@ using namespace std;
 // Constants
 const int n = 40;
 
-// Sum function
-inline void sum(int &p, int n, vector<int> d)
+// Generic sum function
+template <class Summable>
+inline void sum(Summable &p, int size, vector<Summable> d)
 {
     p = 0;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < size; ++i)
     {
         p = p + d[i];
     }
