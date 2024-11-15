@@ -1,0 +1,1 @@
+g++ ./3-multi-template.cpp && ./a.out && rm ./a.out
