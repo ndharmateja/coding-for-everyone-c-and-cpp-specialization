@@ -1,0 +1,1 @@
+g++ ./2-output.cpp && ./a.out && rm ./a.out

@@ -1,0 +1,1 @@
+g++ ./1-subtraction.cpp && ./a.out && rm ./a.out
