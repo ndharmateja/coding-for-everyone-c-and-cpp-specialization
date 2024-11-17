@@ -3,6 +3,9 @@
 !/**/
 !*.*
 
+# Don't ignore make files
+!Makefile
+
 # DS_Store
 .DS_Store
 
