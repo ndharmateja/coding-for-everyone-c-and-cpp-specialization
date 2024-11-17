@@ -1,1 +1,1 @@
-g++ ./2-output.cpp && ./a.out && rm ./a.out
+g++ --std=c++17 ./2-output.cpp && ./a.out && rm ./a.out

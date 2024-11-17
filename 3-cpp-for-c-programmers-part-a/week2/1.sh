@@ -1,1 +1,1 @@
-g++ ./1-subtraction.cpp && ./a.out && rm ./a.out
+g++ --std=c++17 ./1-subtraction.cpp && ./a.out && rm ./a.out

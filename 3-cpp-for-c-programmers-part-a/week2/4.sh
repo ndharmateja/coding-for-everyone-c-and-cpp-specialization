@@ -1,1 +1,1 @@
-g++ ./4-enums.cpp && ./a.out && rm ./a.out
+g++ --std=c++17 ./4-enums.cpp && ./a.out && rm ./a.out

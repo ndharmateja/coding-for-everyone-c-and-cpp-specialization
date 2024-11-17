@@ -1,1 +1,1 @@
-g++ ./3-multi-template.cpp && ./a.out && rm ./a.out
+g++ --std=c++17 ./3-multi-template.cpp && ./a.out && rm ./a.out

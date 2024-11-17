@@ -1,1 +1,1 @@
-g++ ./5-point-class.cpp && ./a.out && rm ./a.out
+g++ --std=c++17 ./5-point-class.cpp && ./a.out && rm ./a.out
