@@ -1,0 +1,1 @@
+g++ ./5-point-class.cpp && ./a.out && rm ./a.out
