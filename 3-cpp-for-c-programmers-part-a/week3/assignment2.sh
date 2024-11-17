@@ -1,0 +1,1 @@
+g++ --std=c++17 ./assignment2.cpp && ./a.out && rm ./a.out
