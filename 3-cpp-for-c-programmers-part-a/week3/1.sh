@@ -1,0 +1,1 @@
+g++ --std=c++17 ./1-lists.cpp && ./a.out && rm ./a.out
