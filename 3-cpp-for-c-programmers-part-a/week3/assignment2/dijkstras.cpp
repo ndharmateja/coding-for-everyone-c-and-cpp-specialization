@@ -111,14 +111,20 @@ public:
         construct_path(path, dest);
 
         // Print the shortest path
-        cout << "Shortest path from '" << src << "' to '" << dest << "': ";
+        cout << "Shortest path from '" << src << "' to '" << dest << "'";
+        cout << " (length " << distances[dest] << "): ";
         while (path.size() > 1)
         {
             cout << path[path.size() - 1] << " -> ";
             path.pop_back();
         }
-        cout << path[path.size() - 1];
-        cout << " (length: " << distances[dest] << ")" << endl;
+        cout << path[path.size() - 1] << endl;
+    }
+    void print_shortest_paths()
+    {
+        for (int i = 0; i < num_vertices; i++)
+            if (i != src)
+                print_shortest_path(i);
     }
 };
 

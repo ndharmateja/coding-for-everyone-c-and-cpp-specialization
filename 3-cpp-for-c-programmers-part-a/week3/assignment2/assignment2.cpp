@@ -28,7 +28,8 @@ ostream &operator<<(ostream &out, const Graph &graph)
 int main(int argc, char const *argv[])
 {
     // Create graph and add edges
-    Graph g(5);
+    int num_vertices = 5;
+    Graph g(num_vertices);
     g.add_edge(0, 1, 10);
     g.add_edge(0, 2, 3);
     g.add_edge(1, 2, 1.0);
@@ -46,7 +47,7 @@ int main(int argc, char const *argv[])
 
     // Run Dijkstra's and print the shortest path
     Dijkstras d(g, 0);
-    d.print_shortest_path(3);
+    d.print_shortest_paths();
 
     return 0;
 }
