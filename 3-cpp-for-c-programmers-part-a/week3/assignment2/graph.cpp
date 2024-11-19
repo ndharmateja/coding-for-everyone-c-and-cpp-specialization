@@ -12,13 +12,11 @@ using namespace std;
 class Graph
 {
 private:
-    int n;
     vector<vector<WeightedEdge>> list;
 
 public:
     Graph(int n)
     {
-        this->n = n;
         for (int i = 0; i < n; i++)
         {
             vector<WeightedEdge> neighbours;
@@ -27,7 +25,7 @@ public:
     }
 
     vector<WeightedEdge> get_neighbours(int v) const { return list[v]; }
-    int get_num_vertices() const { return this->n; }
+    int get_num_vertices() const { return this->list.size(); }
     void add_edge(int from, int to, double weight) { this->list[from].push_back(WeightedEdge(from, to, weight)); }
 };
 
