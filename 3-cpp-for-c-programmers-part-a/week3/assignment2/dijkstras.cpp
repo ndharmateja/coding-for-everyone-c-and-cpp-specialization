@@ -33,6 +33,7 @@ private:
         // Distance for the src node is 0
         // And it is found initially
         distances[src] = 0;
+        prev[src] = src;
     }
     // returns the node with the smallest distance which is already not found
     int find_next_node()
@@ -80,12 +81,15 @@ private:
     }
     void construct_path()
     {
-        int curr = dest;
-        while (curr != -1)
+        int curr_node = dest;
+        int prev_node = prev[curr_node];
+        while (curr_node != prev_node)
         {
-            path.push_back(curr);
-            curr = prev[curr];
+            path.push_back(curr_node);
+            curr_node = prev_node;
+            prev_node = prev[curr_node];
         }
+        path.push_back(curr_node);
     }
 
 public:
@@ -106,7 +110,7 @@ public:
         }
 
         // Print the shortest path
-        cout << "Shortest path: ";
+        cout << "Shortest path from " << src << " to " << dest << ": ";
         while (path.size() > 1)
         {
             cout << path[path.size() - 1] << " -> ";
