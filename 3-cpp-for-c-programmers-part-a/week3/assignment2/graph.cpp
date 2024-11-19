@@ -25,7 +25,6 @@ public:
             this->list.push_back(neighbours);
         }
     }
-    Graph() = default;
 
     vector<WeightedEdge> get_neighbours(int v) const { return list[v]; }
     int get_num_vertices() const { return this->n; }
