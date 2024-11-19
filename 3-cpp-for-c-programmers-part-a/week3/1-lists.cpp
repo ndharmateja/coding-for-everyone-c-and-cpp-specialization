@@ -21,6 +21,17 @@ public:
     void advance() { this->cursor = this->cursor->next; }
     void print();
     void reset() { this->cursor = this->head; }
+    ~linked_list()
+    {
+        list_node<int> *curr = head;
+        list_node<int> *next;
+        while (curr != nullptr)
+        {
+            next = curr->next;
+            delete curr;
+            curr = next;
+        }
+    }
 
 private:
     list_node<T> *head;
@@ -63,10 +74,11 @@ void linked_list<T>::print_helper()
 
 int main(int argc, char const *argv[])
 {
-    linked_list<int> list;
+    linked_list<int> *list = new linked_list<int>();
     for (int i = 0; i < 5; i++)
-        list.prepend(i * i);
+        list->prepend(i * i);
 
-    list.print();
+    list->print();
+    delete list;
     return 0;
 }
