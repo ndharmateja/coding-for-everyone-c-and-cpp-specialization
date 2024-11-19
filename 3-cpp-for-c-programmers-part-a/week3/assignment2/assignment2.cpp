@@ -6,7 +6,7 @@ using namespace std;
 
 ostream &operator<<(ostream &out, const WeightedEdge &edge)
 {
-    out << "edge(" << edge.get_from() << "->" << edge.get_to() << ", " << edge.get_weight() << ")";
+    out << "edge(" << edge.from << "->" << edge.to << ", " << edge.weight << ")";
     return out;
 }
 

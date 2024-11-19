@@ -72,10 +72,10 @@ private:
     }
     void update_neighbour_distance(int curr_node, WeightedEdge &edge)
     {
-        int neighbour = edge.get_to();
-        if (distances[curr_node] + edge.get_weight() < distances[neighbour])
+        int neighbour = edge.to;
+        if (distances[curr_node] + edge.weight < distances[neighbour])
         {
-            distances[neighbour] = distances[curr_node] + edge.get_weight();
+            distances[neighbour] = distances[curr_node] + edge.weight;
             prev[neighbour] = curr_node;
         }
     }
