@@ -90,12 +90,9 @@ private:
     }
 
 public:
-    Dijkstras(Graph &graph, int src, int dest)
+    Dijkstras(Graph &graph, int src, int dest) : graph(graph), src(src), dest(dest)
     {
-        this->graph = graph;
         this->num_vertices = graph.get_num_vertices();
-        this->src = src;
-        this->dest = dest;
         initialize_values(src);
         compute_shortest_path();
     }
