@@ -5,7 +5,6 @@
 #include <utility>
 #include <vector>
 #include <limits>
-#include "weighted-edge.cpp"
 
 using namespace std;
 

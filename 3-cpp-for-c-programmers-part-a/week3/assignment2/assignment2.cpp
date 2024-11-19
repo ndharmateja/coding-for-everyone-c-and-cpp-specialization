@@ -4,17 +4,11 @@
 
 using namespace std;
 
-ostream &operator<<(ostream &out, const WeightedEdge &edge)
-{
-    out << "edge(" << edge.from << "->" << edge.to << ", " << edge.weight << ")";
-    return out;
-}
-
 ostream &operator<<(ostream &out, const Graph &graph)
 {
     for (int i = 0; i < graph.get_num_vertices(); i++)
     {
-        vector<WeightedEdge> neighbours = graph.get_neighbours(i);
+        vector<int> neighbours = graph.get_neighbours(i);
         int num_neighbours = neighbours.size();
         out << i << ": { ";
         for (int j = 0; j < num_neighbours; j++)
