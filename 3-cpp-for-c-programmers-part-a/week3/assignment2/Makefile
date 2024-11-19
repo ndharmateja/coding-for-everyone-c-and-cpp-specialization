@@ -19,5 +19,5 @@ clean:
 	rm *.o
 	rm assignment2
 
-launch:
+launch: assignment2
 	./assignment2
