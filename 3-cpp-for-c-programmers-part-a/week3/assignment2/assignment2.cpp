@@ -32,7 +32,7 @@ ostream &operator<<(ostream &out, const Graph &graph)
 int main(int argc, char const *argv[])
 {
     // Create graph and add edges
-    Graph g(6);
+    Graph g(5);
     g.add_edge(0, 1, 10);
     g.add_edge(0, 2, 3);
     g.add_edge(1, 2, 1.0);
@@ -49,7 +49,7 @@ int main(int argc, char const *argv[])
     cout << g << endl;
 
     // Run Dijkstra's and print the shortest path
-    Dijkstras d(g, 0, 5);
+    Dijkstras d(g, 0, 3);
     d.print_shortest_path();
 
     return 0;
