@@ -13,7 +13,9 @@ ostream &operator<<(ostream &out, const Graph &graph)
         out << i << ": { ";
         for (int j = 0; j < num_neighbours; j++)
         {
-            out << neighbours[j];
+            int neighbour = neighbours[j];
+            double edge_weight = graph.get_edge_weight(i, neighbour);
+            out << "edge(" << i << "->" << neighbour << ", " << edge_weight << ")";
             if (j != num_neighbours - 1)
                 out << ", ";
         }

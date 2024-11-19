@@ -62,19 +62,19 @@ private:
 
             // Update distances of all neighbours
             // if their new distances are less than their curr distances
-            for (WeightedEdge neighbour_edge : graph.get_neighbours(curr_node))
-                update_neighbour_distance(curr_node, neighbour_edge);
+            for (int neighbour : graph.get_neighbours(curr_node))
+                update_neighbour_distance(curr_node, neighbour);
         }
 
         // Construct the shortest path
         construct_path();
     }
-    void update_neighbour_distance(int curr_node, WeightedEdge &edge)
+    void update_neighbour_distance(int curr_node, int neighbour)
     {
-        int neighbour = edge.to;
-        if (distances[curr_node] + edge.weight < distances[neighbour])
+        double edge_weight = this->graph.get_edge_weight(curr_node, neighbour);
+        if (distances[curr_node] + edge_weight < distances[neighbour])
         {
-            distances[neighbour] = distances[curr_node] + edge.weight;
+            distances[neighbour] = distances[curr_node] + edge_weight;
             prev[neighbour] = curr_node;
         }
     }
