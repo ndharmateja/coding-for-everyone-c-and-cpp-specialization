@@ -17,8 +17,6 @@ private:
     vector<int> prev;
     vector<bool> found;
     int src;
-    int dest;
-    vector<int> path;
     void initialize_values(int src)
     {
 
@@ -66,9 +64,6 @@ private:
             for (int neighbour : graph.get_neighbours(curr_node))
                 update_neighbour_distance(curr_node, neighbour);
         }
-
-        // Construct the shortest path
-        construct_path();
     }
     void update_neighbour_distance(int curr_node, int neighbour)
     {
@@ -79,7 +74,7 @@ private:
             prev[neighbour] = curr_node;
         }
     }
-    void construct_path()
+    void construct_path(vector<int> &path, int dest)
     {
         int curr_node = dest;
         int prev_node = prev[curr_node];
@@ -93,31 +88,37 @@ private:
     }
 
 public:
-    Dijkstras(Graph &graph, int src, int dest) : graph(graph), src(src), dest(dest)
+    Dijkstras(Graph &graph, int src) : graph(graph), src(src)
     {
         this->num_vertices = graph.get_num_vertices();
         initialize_values(src);
         compute_shortest_path();
     }
-    void print_shortest_path()
+    // If previous node of dest is -1
+    // that means no path to dest from src
+    bool is_connected_to(int dest) { return prev[dest] != -1; }
+    double get_shortest_distance(int dest) { return distances[dest]; }
+    void print_shortest_path(int dest)
     {
-        // If previous node of dest is -1
-        // that means no path to dest from src
-        if (prev[dest] == -1)
+        if (!is_connected_to(dest))
         {
             cout << "No path between " << src << " & " << dest << " in the graph." << endl;
             return;
         }
 
+        // Construct the shortest path
+        vector<int> path;
+        construct_path(path, dest);
+
         // Print the shortest path
-        cout << "Shortest path from " << src << " to " << dest << ": ";
+        cout << "Shortest path from '" << src << "' to '" << dest << "': ";
         while (path.size() > 1)
         {
             cout << path[path.size() - 1] << " -> ";
             path.pop_back();
         }
-        cout << path[path.size() - 1] << endl;
-        cout << "Distance: " << distances[dest] << endl;
+        cout << path[path.size() - 1];
+        cout << " (length: " << distances[dest] << ")" << endl;
     }
 };
 

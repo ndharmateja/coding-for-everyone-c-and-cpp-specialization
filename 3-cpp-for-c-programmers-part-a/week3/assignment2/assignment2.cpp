@@ -45,8 +45,8 @@ int main(int argc, char const *argv[])
     cout << g << endl;
 
     // Run Dijkstra's and print the shortest path
-    Dijkstras d(g, 0, 3);
-    d.print_shortest_path();
+    Dijkstras d(g, 0);
+    d.print_shortest_path(3);
 
     return 0;
 }
