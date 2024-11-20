@@ -4,8 +4,14 @@ using namespace std;
 
 class Point
 {
+    friend const Point operator+(const Point &p1, const Point &p2);
+    friend ostream &operator<<(ostream &out, const Point &p);
+
 public:
-    Point() { x = y = 0.0; }
+    Point()
+    {
+        x = y = 0.0;
+    }
     Point(double x, double y)
     {
         this->x = x;
@@ -22,13 +28,13 @@ private:
 
 ostream &operator<<(ostream &out, const Point &p)
 {
-    out << "(" << p.getx() << ", " << p.gety() << ")";
+    out << "(" << p.x << ", " << p.y << ")";
     return out;
 }
 
 const Point operator+(const Point &p1, const Point &p2)
 {
-    return Point(p1.getx() + p2.getx(), p1.gety() + p2.gety());
+    return Point(p1.x + p2.x, p1.y + p2.y);
 }
 
 int main(int argc, char const *argv[])
