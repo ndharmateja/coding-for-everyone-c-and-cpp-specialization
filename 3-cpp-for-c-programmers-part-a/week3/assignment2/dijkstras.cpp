@@ -126,6 +126,21 @@ public:
             if (i != src)
                 print_shortest_path(i);
     }
+    double get_average_shortest_path_length()
+    {
+        double lengths_sum = 0.0;
+        int count = 0;
+        for (int i = 0; i < num_vertices; i++)
+        {
+            double distance = distances[i];
+            if (i != src && distance != POSITIVE_INFINITY)
+            {
+                lengths_sum += distance;
+                count++;
+            }
+        }
+        return lengths_sum / count;
+    }
 };
 
 #endif

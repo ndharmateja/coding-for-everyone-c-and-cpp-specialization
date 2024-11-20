@@ -48,6 +48,7 @@ int main(int argc, char const *argv[])
     // Run Dijkstra's and print the shortest path
     Dijkstras d(g, 0);
     d.print_shortest_paths();
+    cout << "Average shortest path length: " << d.get_average_shortest_path_length() << endl;
 
     return 0;
 }
