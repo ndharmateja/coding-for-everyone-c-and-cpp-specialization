@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
 
     // Create lst2 from lst's iterator
     cout << "Created lst2 from lst's iterator" << endl;
-    vector<int>::iterator start = lst.begin(), end = lst.end();
+    auto start = lst.begin(), end = lst.end();
     vector<int> lst2(start, end);
     print(lst2);
     cout << endl;
