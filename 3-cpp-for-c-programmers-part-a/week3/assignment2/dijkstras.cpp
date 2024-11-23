@@ -36,7 +36,6 @@ private:
     // returns the node with the smallest distance which is already not found
     int find_next_node()
     {
-        int num_vertices = distances.size();
         double min_distance = POSITIVE_INFINITY;
         int min_node = -1;
         for (int i = 0; i < num_vertices; i++)
