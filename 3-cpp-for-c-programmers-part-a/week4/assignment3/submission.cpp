@@ -226,7 +226,7 @@ public:
 int main(int argc, char const *argv[])
 {
     // Create graph and add edges
-    Graph g("sample_data.txt");
+    Graph g("data/sample_data.txt");
 
     // Print the graph
     // cout << "Graph: " << endl;
