@@ -2,6 +2,8 @@
 #define GRAPH_H
 
 #include <iostream>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -24,6 +26,21 @@ private:
     }
 
 public:
+    Graph(string filename)
+    {
+        ifstream f(filename);
+        istream_iterator<int> start(f), end;
+        vector<int> values(start, end);
+
+        int n = values[0];
+        initialize_list(n);
+        for (int i = 1; i < values.size(); i += 3)
+        {
+            int from = values[i], to = values[i + 1];
+            double weight = static_cast<double>(values[i + 2]);
+            add_edge(from, to, weight);
+        }
+    }
     Graph(int n) { initialize_list(n); }
     Graph(const Graph &g) { this->list = vector<vector<double>>(g.list); }
 
