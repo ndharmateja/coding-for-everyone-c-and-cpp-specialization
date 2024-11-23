@@ -17,7 +17,7 @@ public:
 
 ostream &operator<<(ostream &out, const Edge &edge)
 {
-    out << edge.from << "->" << edge.to;
+    out << edge.from << "-" << edge.to;
     return out;
 }
 
