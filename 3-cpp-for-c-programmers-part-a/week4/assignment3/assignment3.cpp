@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
     // Create graph and add edges
-    Graph g("sample_data1.txt");
+    Graph g("sample_data.txt");
 
     // Print the graph
     cout << "Graph: " << endl;
