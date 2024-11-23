@@ -25,30 +25,27 @@ ostream &operator<<(ostream &out, const Graph &graph)
     return out;
 }
 
-int main(int argc, char const *argv[])
+void run_with_density(Graph &g, double density)
 {
-    // Create graph and add edges
-    int num_vertices = 5;
-    Graph g(num_vertices);
-    g.add_edge(0, 1, 10);
-    g.add_edge(0, 2, 3);
-    g.add_edge(1, 2, 1.0);
-    g.add_edge(2, 1, 4.0);
-    g.add_edge(1, 3, 2.0);
-    g.add_edge(2, 4, 2.0);
-    g.add_edge(2, 3, 8.0);
-    g.add_edge(2, 3, 8.0);
-    g.add_edge(3, 4, 7.0);
-    g.add_edge(4, 3, 9.0);
-
-    // Print the graph
-    cout << "Graph: " << endl;
-    cout << g << endl;
-
-    // Run Dijkstra's and print the shortest path
+    // Run Dijkstra's and print the shortest path for given density
+    cout << "Running with " << density * 100 << "% density" << endl;
+    g.generate_random_graph(density);
     Dijkstras d(g, 0);
     d.print_shortest_paths();
     cout << "Average shortest path length: " << d.get_average_shortest_path_length() << endl;
+    cout << endl;
+}
+
+int main(int argc, char const *argv[])
+{
+    // Create graph and add edges
+    Graph g1(50);
+
+    // Run Dijkstra's and print the shortest path for 20% density
+    run_with_density(g1, 0.2);
+
+    // Run Dijkstra's and print the shortest path for 40% density
+    run_with_density(g1, 0.4);
 
     return 0;
 }
