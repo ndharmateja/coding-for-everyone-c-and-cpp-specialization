@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <random>
 
 using namespace std;
 
@@ -107,8 +108,21 @@ private:
         for (Card c : hand)
             counts[c.get_rank().get_value()]++;
     }
+    int get_count(vector<Card> &hand, int value)
+    {
+        vector<int> counts(13);
+        build_counts(hand, counts);
+        int result = 0;
+        for (auto count : counts)
+            if (count == value)
+                result++;
+        return result;
+    }
 
 public:
+    bool is_straight_flush(vector<Card> &hand) { return is_straight(hand) && is_flush(hand); }
+    bool is_four_of_a_kind(vector<Card> &hand) { return get_count(hand, 4) == 1; }
+    bool is_full_house(vector<Card> &hand) { return get_count(hand, 2) == 1 && get_count(hand, 3) == 1; }
     bool is_flush(vector<Card> &hand)
     {
         Suit suit = hand[0].get_suit();
@@ -143,28 +157,9 @@ public:
         // Return false otherwise
         return false;
     }
-    bool is_straight_flush(vector<Card> &hand) { return is_straight(hand) && is_flush(hand); }
-    bool is_four_of_a_kind(vector<Card> &hand)
-    {
-        vector<int> counts(13);
-        build_counts(hand, counts);
-        for (auto count : counts)
-            if (count == 4)
-                return true;
-        return false;
-    }
-    bool is_full_house(vector<Card> &hand)
-    {
-        vector<int> counts(13);
-        build_counts(hand, counts);
-        int num_pairs = 0, num_triplets = 0;
-        for (auto count : counts)
-            if (count == 2)
-                num_pairs++;
-            else if (count == 3)
-                num_triplets++;
-        return num_pairs == 1 && num_triplets == 1;
-    }
+    bool is_triplet(vector<Card> &hand) { return get_count(hand, 3) == 1; }
+    bool is_two_pair(vector<Card> &hand) { return get_count(hand, 2) == 2; }
+    bool is_one_pair(vector<Card> &hand) { return get_count(hand, 2) == 1; }
     void init_deck(vector<Card> &deck)
     {
         for (int i = 0; i < 52; i++)
@@ -187,9 +182,11 @@ int main(int argc, char const *argv[])
     vector<Card> hand(5);
     int straight_count = 0, flush_count = 0, full_house_count = 0;
     int straight_flush_count = 0, four_of_a_kind_count = 0;
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    default_random_engine e(seed);
     for (int i = 0; i < trials; i++)
     {
-        random_shuffle(deck.begin(), deck.end());
+        shuffle(deck.begin(), deck.end(), e);
         for (int j = 0; j < 5; j++)
             hand[j] = deck[j];
         if (cu.is_straight_flush(hand))
@@ -204,10 +201,10 @@ int main(int argc, char const *argv[])
             full_house_count++;
     }
 
-    cout << "Straight:\t" << straight_count << "/" << trials << endl;
-    cout << "Flush:\t\t" << flush_count << "/" << trials << endl;
     cout << "Straight flush:\t" << straight_flush_count << "/" << trials << endl;
-    cout << "Full house:\t" << full_house_count << "/" << trials << endl;
     cout << "Four of a kind:\t" << four_of_a_kind_count << "/" << trials << endl;
+    cout << "Full house:\t" << full_house_count << "/" << trials << endl;
+    cout << "Flush:\t\t" << flush_count << "/" << trials << endl;
+    cout << "Straight:\t" << straight_count << "/" << trials << endl;
     return 0;
 }
