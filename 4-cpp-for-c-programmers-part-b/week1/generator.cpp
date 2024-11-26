@@ -19,11 +19,10 @@ public:
 
 int main(int argc, char const *argv[])
 {
-    gen g(1, 0.1);
-    vector<double> v(10);
-
-    for (int i = 0; i < 20; i++)
-        cout << g() << endl;
-
+    gen g(1, 0.01);
+    vector<double> v(100);
+    generate(v.begin(), v.end(), g);
+    for (double val : v)
+        cout << val << endl;
     return 0;
 }
